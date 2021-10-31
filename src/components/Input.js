@@ -19,15 +19,28 @@ function Input() {
         id: Date.now(),
       })
     );
+    setInput("");
   };
 
   const handleTarget = (e) => {
     setInput(e.target.value);
   };
 
+  const handleKeyPress = (e) => {
+    console.log(e);
+    if (e.key === "Enter") {
+      addTodo();
+    }
+  };
+
   return (
     <div className="input">
-      <input type="text" value={input} onChange={handleTarget} />
+      <input
+        type="text"
+        value={input}
+        onChange={handleTarget}
+        onKeyPress={handleKeyPress}
+      />
       <button onClick={addTodo}>ADD!</button>
     </div>
   );
